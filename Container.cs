@@ -17,10 +17,10 @@ namespace containership
         }
         public enum Type
         {
-            Valuable = 1,
-            Normal = 2,
-            Cooled = 3,
-            CooledValuable = 4
+            Cooled = 1,
+            CooledValuable = 2,
+            Normal = 3,
+            Valuable = 4,
         }
         public override string ToString()
         {

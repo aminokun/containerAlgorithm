@@ -8,16 +8,16 @@ namespace containership
 {
     public class Stack
     {
-        List<Container> containers = new List<Container>();
         public int MaxStackWeight = 120000;
+        List<Container> containers = new List<Container>();
         public int Count()
         {
             return containers.Count;
         }
 
-        public Container TopContainer()
+        public Container TopContainer(List<Container> sortedStack)
         {
-            return containers.Last();
+            return sortedStack.Last();
         }
     }
 }
