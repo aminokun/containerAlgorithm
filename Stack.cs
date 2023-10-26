@@ -15,9 +15,9 @@ namespace containership
             return containers.Count;
         }
 
-        public Container TopContainer(List<Container> sortedStack)
+        public Container TopContainer()
         {
-            return sortedStack.Last();
+            return containers.Last();
         }
     }
 }
