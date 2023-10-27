@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerShip", "ContainerShip\ContainerShip.csproj", "{B7A0E6B6-F76E-4220-88E2-7DB62767DBAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerShip.UnitTests", "ContainerShip.UnitTests\ContainerShip.UnitTests.csproj", "{4718B6F4-CA69-4B45-A153-3A8EE1B34E2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7A0E6B6-F76E-4220-88E2-7DB62767DBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A0E6B6-F76E-4220-88E2-7DB62767DBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A0E6B6-F76E-4220-88E2-7DB62767DBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A0E6B6-F76E-4220-88E2-7DB62767DBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4718B6F4-CA69-4B45-A153-3A8EE1B34E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4718B6F4-CA69-4B45-A153-3A8EE1B34E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4718B6F4-CA69-4B45-A153-3A8EE1B34E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4718B6F4-CA69-4B45-A153-3A8EE1B34E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D212BAE-E2F1-4F62-832F-7B8472A32C7F}
+	EndGlobalSection
+EndGlobal
