@@ -41,7 +41,6 @@ namespace ContainerShip.UnitTests
             List<Container> sortedContainers = containerSorter.Sorter(TestContainers);
 
             // Assert
-
             Assert.That(sortedContainers, Is.EqualTo(CorrectOrder));
 
             Assert.Pass();
