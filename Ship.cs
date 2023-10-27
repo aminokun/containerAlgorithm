@@ -42,7 +42,7 @@ namespace containership
 
         public override string ToString()
         {
-            return "Ship:\n    " +  MaxLength.ToString() + " Wide, " +  MaxWidth.ToString() + " Long, " +  MinWeight.ToString() + " Kg Min Weight";
+            return "Ship:\n    " + MaxLength.ToString() + " Wide, " + MaxWidth.ToString() + " Long, " + MinWeight.ToString() + " Kg Min Weight" + "\n";
         }
     }
 }

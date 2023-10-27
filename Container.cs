@@ -8,7 +8,7 @@ namespace containership
 {
     public class Container
     {
-        int Weight { get; set; }
+        public int Weight { get; private set; }
         public bool isCooled { get; private set; }
         public bool isValuable { get; private set; }
 
@@ -21,7 +21,11 @@ namespace containership
 
         public override string ToString()
         {
-            return "Container:\n    " + this.Weight.ToString() + "Kg, " + " Cooled: " + this.isCooled.ToString() + "Valuable: " + this.isValuable.ToString() ;
+            return 
+                "    Container: " + "\n" +
+                "       Cooled: " + this.isCooled.ToString() + "\n" +
+                "       Valuable: " + this.isValuable.ToString() + "\n" +
+                "       Weight: " + this.Weight.ToString() + "Kg " + "\n";
         }
     }
 }
