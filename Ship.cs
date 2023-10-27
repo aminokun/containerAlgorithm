@@ -15,9 +15,9 @@ namespace containership
 
         private void CalcMinWeight(int maxStackWeight)
         {
-            int totalSpace = this.MaxLength * this.MaxWidth;
+            int totalSpace = MaxLength * MaxWidth;
             int totalWeight = totalSpace * maxStackWeight;
-            this.MinWeight = totalWeight / 2;
+            MinWeight = totalWeight / 2;
         }
 
 
@@ -28,8 +28,8 @@ namespace containership
                 throw new ArgumentException("Both maxLength and maxWidth must be greater than zero.");
             }
 
-            this.MaxLength = maxLength;
-            this.MaxWidth = maxWidth;
+            MaxLength = maxLength;
+            MaxWidth = maxWidth;
 
             for (int i = 0; i < maxWidth; i++)
             {
@@ -42,7 +42,7 @@ namespace containership
 
         public override string ToString()
         {
-            return "Ship:\n    " + this.MaxLength.ToString() + " Wide, " + this.MaxWidth.ToString() + " Long, " + this.MinWeight.ToString() + " Kg Min Weight";
+            return "Ship:\n    " +  MaxLength.ToString() + " Wide, " +  MaxWidth.ToString() + " Long, " +  MinWeight.ToString() + " Kg Min Weight";
         }
     }
 }

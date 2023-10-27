@@ -8,10 +8,15 @@ namespace containership
 {
     public class ContainerSorter
     {
-        //Sort containers by type and size...
+        //Sort containers by type and size
         public ContainerSorter(List<Container> containers)
         {
-            List<Container> sortedContainers = containers.OrderBy(type => type.ContainerType).ToList();
+            List<Container> sortedContainers = containers
+                .OrderBy(cooled => cooled.isCooled)
+                .ThenBy(cooledValuable => cooledValuable.isValuable && cooledValuable.isCooled)
+                .ThenBy(normal => !normal.isCooled && !normal.isValuable)
+                .ThenBy(valuable => valuable.isValuable && !valuable.isCooled)
+                .ToList();
         }
     }
 }
