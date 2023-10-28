@@ -13,6 +13,8 @@ namespace containership
         private int MaxWidth { get; }
         private int MinWeight { get; set; }
 
+        ContainerAlgorithm containerAlgorithm = new ContainerAlgorithm();
+
         private void CalcMinWeight(int maxStackWeight)
         {
             int totalSpace = MaxLength * MaxWidth;
@@ -20,8 +22,12 @@ namespace containership
             MinWeight = totalWeight / 2;
         }
 
+        public List<Row> ReturnRowsForTest()
+        {
+            return rows;
+        }
 
-        public Ship(int maxLength, int maxWidth)
+        public Ship(int maxLength, int maxWidth, List<Container> containers)
         {
             if (maxLength <= 0 || maxWidth <= 0)
             {
@@ -37,7 +43,12 @@ namespace containership
             }
             int maxStackWeight = new Stack().MaxStackWeight;
             CalcMinWeight(maxStackWeight);
+            
+            
+            
+            containerAlgorithm.Placer(rows, containers);
         }
+
 
 
         public override string ToString()

@@ -21,6 +21,25 @@ namespace containership
             return sortedContainers;
         }
 
-        //code to place containers in place
+        public void Placer(List<Row> rows, List<Container> containers)
+        {
+            int rowIndex = 0;
+            int stackIndex = 0;
+
+            List<Container> sortedContainers = Sorter(containers);
+
+            foreach (Container container in sortedContainers)
+            {
+                if (container.isCooled)
+                {
+                    if (rows[rowIndex].stacks[stackIndex].CanAddContainer(container))
+                    {
+                        rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                        sortedContainers.Remove(container);
+                        rowIndex++;
+                    }
+                }
+            }
+        }
     }
 }

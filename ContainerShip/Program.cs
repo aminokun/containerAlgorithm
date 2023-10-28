@@ -1,4 +1,6 @@
-﻿namespace containership
+﻿using ContainerShip;
+
+namespace containership
 {
     internal class Program
     {
@@ -7,7 +9,9 @@
             int length = 0;
             int width = 0;
 
+            ContainerList containerList = new ContainerList();
 
+            List<Container> containers = containerList.TestContainerList();
 
             Console.WriteLine("Please provide the length of the ship: ");
             if (args.Length == 0)
@@ -41,7 +45,7 @@
             }
 
 
-            Ship ship = new Ship(length, width);
+            Ship ship = new Ship(length, width, containers);
             Console.WriteLine(ship.ToString());
 
         }

@@ -41,9 +41,39 @@ namespace ContainerShip.UnitTests
             List<Container> sortedContainers = containerSorter.Sorter(TestContainers);
 
             // Assert
+            //Assert.AreEqual(CorrectOrder, sortedContainers);
             Assert.That(sortedContainers, Is.EqualTo(CorrectOrder));
 
             Assert.Pass();
+        }
+
+        [Test]
+        public void ContainerAlgorithm_WhenGivenAListOfContainersCooled_ReturnsPlacedCooledContainers()
+        {
+            //Arrange
+
+            Container C1 = new Container(20000, true, false);
+            Container C2 = new Container(10000, true, false);
+            Container C3 = new Container(7000, true, false);
+            Container C4 = new Container(4000, true, false);
+
+
+            List<Container> TestCooledContainers = new(){
+            C2 , C4 , C3 , C1 
+            };
+
+            ContainerAlgorithm containerPlacer = new ContainerAlgorithm();
+            Ship ship = new Ship(4, 4, TestCooledContainers);
+
+            List<Row> rows = ship.ReturnRowsForTest();
+
+            // Act
+            containerPlacer.Placer(rows, TestCooledContainers);
+
+
+
+            // Assert
+            Assert.IsTrue(rows[0].stacks[0].Contains(C1));
         }
     }
 }
