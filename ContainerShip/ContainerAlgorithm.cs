@@ -21,10 +21,27 @@ namespace containership
             return sortedContainers;
         }
 
+
+
         public void Placer(List<Row> rows, List<Container> containers)
         {
             int rowIndex = 0;
             int stackIndex = 0;
+            int leftIndex = 0;
+            int rightIndex = 0;
+
+            int i = 0;
+
+            void ClearCounter()
+            {
+                if (i == rows.Count)
+                {
+                    i = 0;
+                    leftIndex = 0;
+                    rightIndex = 0;
+                    rowIndex = 0;
+                }
+            }
 
             List<Container> sortedContainers = Sorter(containers);
 
@@ -34,11 +51,27 @@ namespace containership
                 {
                     if (rows[rowIndex].stacks[stackIndex].CanAddContainer(container))
                     {
-                        rows[rowIndex].stacks[stackIndex].AddContainer(container);
-                        sortedContainers.Remove(container);
-                        rowIndex++;
+                        if (i % 2 == 0)
+                        {
+                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                            i++;
+                            rightIndex++;
+                            rowIndex = rows.Count - rightIndex;
+                            ClearCounter();
+                        }
+                        else
+                        {
+                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                            i++;
+                            leftIndex++;
+                            rowIndex = leftIndex;
+                            ClearCounter();
+                        }
                     }
                 }
+
+
+
             }
         }
     }

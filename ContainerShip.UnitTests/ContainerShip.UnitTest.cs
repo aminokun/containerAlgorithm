@@ -48,18 +48,23 @@ namespace ContainerShip.UnitTests
         }
 
         [Test]
-        public void ContainerAlgorithm_WhenGivenAListOfContainersCooled_ReturnsPlacedCooledContainers()
+        public void ContainerAlgorithm_WhenGivenAListOfContainersCooled_ReturnsPlacedCooledContainers_EventAmountOfRows()
         {
             //Arrange
 
             Container C1 = new Container(20000, true, false);
+            Container C6 = new Container(20000, true, false);
             Container C2 = new Container(10000, true, false);
+            Container C7 = new Container(10000, true, false);
             Container C3 = new Container(7000, true, false);
+            Container C8 = new Container(7000, true, false);
             Container C4 = new Container(4000, true, false);
-
+            Container C9 = new Container(4000, true, false);
+            Container C5 = new Container(3000, true, false);
+            Container C10 = new Container(3000, true, false);
 
             List<Container> TestCooledContainers = new(){
-            C2 , C4 , C3 , C1 
+            C2 , C4 , C3 , C1 , C5 , C6 , C7 , C8 , C9 , C10
             };
 
             ContainerAlgorithm containerPlacer = new ContainerAlgorithm();
@@ -70,10 +75,57 @@ namespace ContainerShip.UnitTests
             // Act
             containerPlacer.Placer(rows, TestCooledContainers);
 
+            // Assert
+            Assert.IsTrue(rows[0].stacks[0].Contains(C1));
+            Assert.IsTrue(rows[3].stacks[0].Contains(C6));
+            Assert.IsTrue(rows[1].stacks[0].Contains(C2));
+            Assert.IsTrue(rows[2].stacks[0].Contains(C7));
+            Assert.IsTrue(rows[0].stacks[0].Contains(C3));
+            Assert.IsTrue(rows[3].stacks[0].Contains(C8));
+            Assert.IsTrue(rows[1].stacks[0].Contains(C4));
+            Assert.IsTrue(rows[2].stacks[0].Contains(C9));
+            Assert.IsTrue(rows[0].stacks[0].Contains(C5));
+            Assert.IsTrue(rows[3].stacks[0].Contains(C10));
+        }
 
+        [Test]
+        public void ContainerAlgorithm_WhenGivenAListOfContainersCooled_ReturnsPlacedCooledContainers_OddAmountOfRows()
+        {
+            //Arrange
+            Container C1 = new Container(20000, true, false);
+            Container C6 = new Container(20000, true, false);
+            Container C2 = new Container(10000, true, false);
+            Container C7 = new Container(10000, true, false);
+            Container C3 = new Container(7000, true, false);
+            Container C8 = new Container(7000, true, false);
+            Container C4 = new Container(4000, true, false);
+            Container C9 = new Container(4000, true, false);
+            Container C5 = new Container(3000, true, false);
+            Container C10 = new Container(3000, true, false);
+
+            List<Container> TestCooledContainers = new(){
+            C2 , C4 , C3 , C1 , C5 , C6 , C7 , C8 , C9 , C10
+            };
+
+            ContainerAlgorithm containerPlacer = new ContainerAlgorithm();
+            Ship ship = new Ship(4, 5, TestCooledContainers);
+
+            List<Row> rows = ship.ReturnRowsForTest();
+
+            // Act
+            containerPlacer.Placer(rows, TestCooledContainers);
 
             // Assert
             Assert.IsTrue(rows[0].stacks[0].Contains(C1));
+            Assert.IsTrue(rows[4].stacks[0].Contains(C6));
+            Assert.IsTrue(rows[1].stacks[0].Contains(C2));
+            Assert.IsTrue(rows[3].stacks[0].Contains(C7));
+            Assert.IsTrue(rows[2].stacks[0].Contains(C3));
+            Assert.IsTrue(rows[0].stacks[0].Contains(C8));
+            Assert.IsTrue(rows[4].stacks[0].Contains(C4));
+            Assert.IsTrue(rows[1].stacks[0].Contains(C9));
+            Assert.IsTrue(rows[3].stacks[0].Contains(C5));
+            Assert.IsTrue(rows[2].stacks[0].Contains(C10));
         }
     }
 }

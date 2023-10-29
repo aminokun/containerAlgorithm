@@ -22,15 +22,15 @@ namespace containership
         }
 
 
-        public Container? TopContainer()
-        {
-            if (containers.Count != 0)
-            {
-                return containers.Last();
-            }
-            return null;
+        //public Container? TopContainer()
+        //{
+        //    if (containers.Count != 0)
+        //    {
+        //        return containers.Last();
+        //    }
+        //    return null;
 
-        }
+        //}
 
         public bool CanAddContainer(Container container)
         {
@@ -39,7 +39,7 @@ namespace containership
                 currentWeight += placedContainer.Weight;
             }
 
-            if(TopContainer() != null && container.Weight + currentWeight <= MaxStackWeight && !TopContainer().isValuable) 
+            if(container.Weight + currentWeight <= MaxStackWeight) 
             {
                 return true;
             }

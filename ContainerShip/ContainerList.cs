@@ -21,6 +21,12 @@ namespace ContainerShip
             Container C2 = new Container(10000, true, false);
             Container C3 = new Container(7000, true, false);
             Container C4 = new Container(4000, true, false);
+            Container C5 = new Container(3000, true, false);
+            Container C6 = new Container(20000, true, false);
+            Container C7 = new Container(10000, true, false);
+            Container C8 = new Container(7000, true, false);
+            Container C9 = new Container(4000, true, false);
+            Container C10 = new Container(3000, true, false);
             //Container CV1 = new Container(6000, true, true);
             //Container CV2 = new Container(5500, true, true);
             //Container CV3 = new Container(4500, true, true);
@@ -30,7 +36,7 @@ namespace ContainerShip
             //Container V2 = new Container(10000, false, true);
 
             List<Container> TestContainers = new(){
-            C2 , C4 , C3 , C1 /*, CV2 , CV3 , CV1 , N2 , N1 , V2, V1*/
+            C2 , C4 , C3 , C1, C5 , C6 , C7 , C8 , C9 , C10 /*, CV2 , CV3 , CV1 , N2 , N1 , V2, V1*/
             };
 
             return TestContainers;
