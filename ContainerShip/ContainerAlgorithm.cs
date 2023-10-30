@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,10 @@ namespace containership
         public void Placer(List<Row> rows, List<Container> containers)
         {
             int rowIndex = 0;
-            int stackIndex = 0;
+            int stackIndex = 1;
             int leftIndex = 0;
             int rightIndex = 0;
-
+            int previousStackIndex = stackIndex;
             int i = 0;
 
             void ClearCounter()
@@ -47,7 +48,32 @@ namespace containership
 
             foreach (Container container in sortedContainers)
             {
+                bool normalContainer = !container.isCooled && !container.isValuable;
+
+
                 if (container.isCooled)
+                {
+                    if (rows[rowIndex].stacks[0].CanAddContainer(container))
+                    {
+                        if (i % 2 == 0)
+                        {
+                            rows[rowIndex].stacks[0].AddContainer(container);
+                            i++;
+                            rightIndex++;
+                            rowIndex = rows.Count - rightIndex;
+                            ClearCounter();
+                        }
+                        else
+                        {
+                            rows[rowIndex].stacks[0].AddContainer(container);
+                            i++;
+                            leftIndex++;
+                            rowIndex = leftIndex;
+                            ClearCounter();
+                        }
+                    }
+                }
+                if(normalContainer)
                 {
                     if (rows[rowIndex].stacks[stackIndex].CanAddContainer(container))
                     {
@@ -57,6 +83,7 @@ namespace containership
                             i++;
                             rightIndex++;
                             rowIndex = rows.Count - rightIndex;
+                            stackIndex = 1;
                             ClearCounter();
                         }
                         else
@@ -65,13 +92,36 @@ namespace containership
                             i++;
                             leftIndex++;
                             rowIndex = leftIndex;
+                            stackIndex = 1;
+                            ClearCounter();
+                        }
+                    }
+                    else
+                    {
+                        if (i % 2 == 0)
+                        {
+                            previousStackIndex = stackIndex;
+                            stackIndex++;
+                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                            i++;
+                            rightIndex++;
+                            rowIndex = rows.Count - rightIndex;
+                            stackIndex = previousStackIndex;
+                            ClearCounter();
+                        }
+                        else
+                        {
+                            previousStackIndex = stackIndex;
+                            stackIndex++;
+                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                            i++;
+                            leftIndex++;
+                            rowIndex = leftIndex;
+                            stackIndex = previousStackIndex;
                             ClearCounter();
                         }
                     }
                 }
-
-
-
             }
         }
     }
