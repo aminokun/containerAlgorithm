@@ -194,6 +194,8 @@ namespace ContainerShip.UnitTests
             containerPlacer.Placer(rows, TestNormalContainers);
 
             // Assert
+            //Assert.Equals(rows[0].stacks[1], )
+
             Assert.IsTrue(rows[0].stacks[1].Contains(N1));
             Assert.IsTrue(rows[3].stacks[1].Contains(N2));
             Assert.IsTrue(rows[1].stacks[1].Contains(N3));

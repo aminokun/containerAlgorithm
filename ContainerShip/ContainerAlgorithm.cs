@@ -27,11 +27,13 @@ namespace containership
         public void Placer(List<Row> rows, List<Container> containers)
         {
             int rowIndex = 0;
-            int stackIndex = 1;
+            int stackIndex;
             int leftIndex = 0;
             int rightIndex = 0;
-            int previousStackIndex;
             int i = 0;
+            bool isContainerAdded;
+
+            int maxStack
 
             void ClearCounter()
             {
@@ -73,50 +75,41 @@ namespace containership
                         }
                     }
                 }
-                if(normalContainer)
+
+
+                if (normalContainer)
                 {
-                    if (rows[rowIndex].stacks[stackIndex].CanAddContainer(container))
+                    stackIndex = 1;
+                    isContainerAdded = false;
+                    while (isContainerAdded == false)
                     {
-                        if (i % 2 == 0)
+                        if (rows[rowIndex].stacks[stackIndex].CanAddContainer(container))
                         {
-                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
-                            i++;
-                            rightIndex++;
-                            rowIndex = rows.Count - rightIndex;
-                            stackIndex = 1;
-                            ClearCounter();
+                            if (i % 2 == 0)
+                            {
+                                rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                                i++;
+                                rightIndex++;
+                                rowIndex = rows.Count - rightIndex;
+                                ClearCounter();
+                                isContainerAdded = true;
+                            }
+                            else
+                            {
+                                rows[rowIndex].stacks[stackIndex].AddContainer(container);
+                                i++;
+                                leftIndex++;
+                                rowIndex = leftIndex;
+                                ClearCounter();
+                                isContainerAdded = true;
+                            }
                         }
                         else
                         {
-                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
-                            i++;
-                            leftIndex++;
-                            rowIndex = leftIndex;
-                            stackIndex = 1;
-                            ClearCounter();
-                        }
-                    }
-                    else
-                    {
-                        if (i % 2 == 0)
-                        {
-                            stackIndex++;
-                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
-                            i++;
-                            rightIndex++;
-                            rowIndex = rows.Count - rightIndex;
-                            stackIndex--;
-                            ClearCounter();
-                        }
-                        else
-                        {
-                            stackIndex++;
-                            rows[rowIndex].stacks[stackIndex].AddContainer(container);
-                            i++;
-                            leftIndex++;
-                            rowIndex = leftIndex;
-                            stackIndex--;
-                            ClearCounter();
+                            if(stackIndex < stacks.Count())
+                            {
+                                stackIndex++;
+                            }
                         }
                     }
                 }
