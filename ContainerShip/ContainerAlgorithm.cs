@@ -30,7 +30,7 @@ namespace containership
             int stackIndex = 1;
             int leftIndex = 0;
             int rightIndex = 0;
-            int previousStackIndex = stackIndex;
+            int previousStackIndex;
             int i = 0;
 
             void ClearCounter()
@@ -100,24 +100,22 @@ namespace containership
                     {
                         if (i % 2 == 0)
                         {
-                            previousStackIndex = stackIndex;
                             stackIndex++;
                             rows[rowIndex].stacks[stackIndex].AddContainer(container);
                             i++;
                             rightIndex++;
                             rowIndex = rows.Count - rightIndex;
-                            stackIndex = previousStackIndex;
+                            stackIndex--;
                             ClearCounter();
                         }
                         else
                         {
-                            previousStackIndex = stackIndex;
                             stackIndex++;
                             rows[rowIndex].stacks[stackIndex].AddContainer(container);
                             i++;
                             leftIndex++;
                             rowIndex = leftIndex;
-                            stackIndex = previousStackIndex;
+                            stackIndex--;
                             ClearCounter();
                         }
                     }
