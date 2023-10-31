@@ -33,7 +33,7 @@ namespace containership
             int i = 0;
             bool isContainerAdded;
 
-            int maxStack
+            int maxStack = rows.Count() - 1;
 
             void ClearCounter()
             {
@@ -51,9 +51,11 @@ namespace containership
             foreach (Container container in sortedContainers)
             {
                 bool normalContainer = !container.isCooled && !container.isValuable;
+                bool cooledContainer = container.isCooled;
+                bool valuableContainer = container.isValuable && !container.isCooled;
 
 
-                if (container.isCooled)
+                if (cooledContainer)
                 {
                     if (rows[rowIndex].stacks[0].CanAddContainer(container))
                     {
@@ -75,7 +77,6 @@ namespace containership
                         }
                     }
                 }
-
 
                 if (normalContainer)
                 {
@@ -106,12 +107,17 @@ namespace containership
                         }
                         else
                         {
-                            if(stackIndex < stacks.Count())
+                            if(stackIndex < maxStack)
                             {
                                 stackIndex++;
                             }
                         }
                     }
+                }
+            
+                if(valuableContainer)
+                {
+
                 }
             }
         }

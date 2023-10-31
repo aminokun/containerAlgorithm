@@ -131,23 +131,25 @@ namespace ContainerShip.UnitTests
         public void ContainerAlgorithm_WhenGivenAListOfContainers_ButStackIsFull_ReturnsPlacedContainerInNextStack_UnevenAmountOfRows() {
             //Arrange
             Container N1 = new Container(120000, false, false);
-            Container N2 = new Container(120000, false, false);
-            Container N3 = new Container(120000, false, false);
-            Container N4 = new Container(120000, false, false);
-            Container N5 = new Container(120000, false, false);
-            Container N6 = new Container(120000, false, false);
-            Container N7 = new Container(120000, false, false);
-            Container N8 = new Container(120000, false, false);
-
+            Container N2 = new Container(119999, false, false);
+            Container N3 = new Container(119998, false, false);
+            Container N4 = new Container(119997, false, false);
+            Container N5 = new Container(119996, false, false);
+            Container N6 = new Container(119995, false, false);
+            Container N7 = new Container(119994, false, false);
+            Container N8 = new Container(119993, false, false);
+            Container N9 = new Container(119992, false, false);
+            Container N10 = new Container(119991, false, false);
+            Container N11 = new Container(119989, false, false);
+            Container N12 = new Container(119988, false, false);
 
             List<Container> TestNormalContainers = new(){
-            N1, N2, N3, N4, N5, N6, N7, N8
+            N1, N2, N3, N4, N5, N6, N7, N8, N9, N10, N11, N12
             };
 
             ContainerAlgorithm containerPlacer = new ContainerAlgorithm();
-            Ship ship = new Ship(4, 5, TestNormalContainers);
+            Ship ship = new Ship(5, 5, TestNormalContainers);
 
-            //Ship ship = new Ship(4, 4, TestNormalContainers);
 
             List<Row> rows = ship.ReturnRowsForTest();
 
@@ -163,6 +165,10 @@ namespace ContainerShip.UnitTests
             Assert.IsTrue(rows[0].stacks[2].Contains(N6));
             Assert.IsTrue(rows[4].stacks[2].Contains(N7));
             Assert.IsTrue(rows[1].stacks[2].Contains(N8));
+            Assert.IsTrue(rows[3].stacks[2].Contains(N9));
+            Assert.IsTrue(rows[2].stacks[2].Contains(N10));
+            Assert.IsTrue(rows[0].stacks[3].Contains(N11));
+            Assert.IsTrue(rows[4].stacks[3].Contains(N12));
         }
         [Test]
         public void ContainerAlgorithm_WhenGivenAListOfContainers_ButStackIsFull_ReturnsPlacedContainerInNextStack_EvenAmountOfRows()

@@ -16,7 +16,10 @@ namespace containership
             return stacks.Any(stack => stack.Contains(container));
         }
 
-
+        public int Count()
+        {
+            return stacks.Count;
+        }
 
         public Row(int length)
         {

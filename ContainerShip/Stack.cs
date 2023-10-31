@@ -11,7 +11,6 @@ namespace containership
         public int MaxStackWeight = 120000;
         List<Container> containers = new List<Container>();
         private int currentWeight = 0;
-        private bool isFull = false;
         public int Count()
         {
             return containers.Count;
