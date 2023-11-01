@@ -103,8 +103,9 @@ namespace ContainerShip.UnitTests
             Container C5 = new Container(3000, true, false);
             Container C10 = new Container(3000, true, false);
 
-            List<Container> TestCooledContainers = new(){
-            C2 , C4 , C3 , C1 , C5 , C6 , C7 , C8 , C9 , C10
+            List<Container> TestCooledContainers = new()
+            {
+                C2 , C4 , C3 , C1 , C5 , C6 , C7 , C8 , C9 , C10
             };
 
             ContainerAlgorithm containerPlacer = new ContainerAlgorithm();

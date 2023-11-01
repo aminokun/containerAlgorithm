@@ -46,7 +46,7 @@ namespace containership
             
             
             
-            containerAlgorithm.Placer(rows, containers);
+            //containerAlgorithm.Placer(rows, containers);
         }
 
 

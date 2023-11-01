@@ -39,14 +39,9 @@ namespace containership
                 currentWeight += placedContainer.Weight;
             }
 
-            if(container.Weight + currentWeight <= MaxStackWeight) 
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+       
+            return container.Weight + currentWeight <= MaxStackWeight;
+
         }
 
         public void AddContainer(Container container)
